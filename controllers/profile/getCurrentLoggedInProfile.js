@@ -9,7 +9,6 @@ module.exports = (req, res) => {
       if (!profile) {
         return res.status(404).json({ profile: 'Profile not found' });
       }
-      console.log(profile);
       res.json(profile);
     })
     .catch((err) => console.log(err));

@@ -50,7 +50,6 @@ export const getProfileByHandle = (handle) => (dispatch) => {
 };
 
 export const getAllProfiles = () => (dispatch) => {
-  console.log('get all');
   dispatch({ type: LOADING_PROFILE });
   axios
     .get('/api/profile/all/')

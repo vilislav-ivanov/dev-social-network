@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ProfileHeader = ({ profile }) => {
-  console.log(profile);
   const dispalyCompany = profile.company ? ` at ${profile.company}` : null;
   const dispalyLocation = profile.location ? profile.location : null;
   let displayWebsite;

@@ -48,8 +48,6 @@ class CreateProfile extends Component {
       const { profile } = props.profile;
       const displaySocial = Object.keys(profile.social).length > 0;
 
-      console.log('get derived state from props in create/edit profile');
-
       return {
         ...state,
         handle: profile.handle,
