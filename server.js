@@ -9,6 +9,7 @@ const port = require('./config/keys').port;
 const authRoute = require('./routes/api/auth');
 const profileRoute = require('./routes/api/profile');
 const postRoute = require('./routes/api/post');
+const photoUploadRoute = require('./routes/api/upload');
 
 // Connect to MongoDB
 mongoose.connect(mongoURI, (err) => {
@@ -29,6 +30,7 @@ mongoose.connect(mongoURI, (err) => {
   app.use('/api/auth', authRoute);
   app.use('/api/profile', profileRoute);
   app.use('/api/post', postRoute);
+  app.use('/api/image', photoUploadRoute);
 
   app.listen(port, () => {
     console.log('app up and running at port' + port);

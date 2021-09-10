@@ -8,6 +8,7 @@ const getAllProfiles = require('./getAllProfiles');
 const getCurrentLoggedInProfile = require('./getCurrentLoggedInProfile');
 const getProfileByHandle = require('./getProfileByHandle');
 const getProfileById = require('./getProfileById');
+const uploadPhoto = require('./uploadPhoto');
 
 module.exports = {
   addEducation,
@@ -20,4 +21,5 @@ module.exports = {
   getCurrentLoggedInProfile,
   getProfileByHandle,
   getProfileById,
+  uploadPhoto,
 };
