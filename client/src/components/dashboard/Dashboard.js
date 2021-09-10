@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { getProfile, deleteProfile } from '../../actions/profile';
 import Spinner from '../common/Spinner';
+import ImageUpload from '../create-profile/ImageUpload';
 import ProfileActions from './ProfileActions';
 import EducationTable from './EducationTable/EducationTable';
 import ExperienceTable from './ExperienceTable/ExperienceTable';
@@ -32,6 +33,7 @@ class Dashboard extends Component {
             <p className="lead text-muted">
               Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
             </p>
+            <ImageUpload />
             <ProfileActions />
             {profile.education.length > 0 ? (
               <EducationTable educations={profile.education} />

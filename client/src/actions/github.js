@@ -26,6 +26,11 @@ export const getGithubByUsername = (username) => (dispatch) => {
             payload,
           });
         });
+      } else {
+        dispatch({
+          type: SET_USER_REPOS,
+          payload: {},
+        });
       }
     })
     .catch((err) => {
