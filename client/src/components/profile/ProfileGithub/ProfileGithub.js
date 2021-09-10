@@ -1,31 +1,42 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-const ProfileGithub = () => {
-  return (
-    <div>
-      <hr />
-      <h3 className="mb-4">Latest Github Repos</h3>
-      <div className="card card-body mb-2">
-        <div className="row">
-          <div className="col-md-6">
-            <h4>
-              <Link to="/" className="text-info" target="_blank">
-                {' '}
-                Repository One
-              </Link>
-            </h4>
-            <p>Repository description</p>
-          </div>
-          <div className="col-md-6">
-            <span className="badge badge-info mr-1">Stars: 44</span>
-            <span className="badge badge-secondary mr-1">Watchers: 21</span>
-            <span className="badge badge-success">Forks: 122</span>
-          </div>
-        </div>
+import { getGithubByUsername } from '../../../actions/github';
+import Spinner from '../../common/Spinner';
+import UserRepo from './UserRepo';
+
+export class ProfileGithub extends Component {
+  state = {
+    githubusername: null,
+  };
+  componentDidMount() {
+    this.props.getGithubByUsername(this.props.profile.githubusername);
+    // this.setState({ githubusername:  });
+  }
+
+  render() {
+    const { loading, repos } = this.props.repos;
+
+    if (loading) {
+      return <Spinner />;
+    }
+    let reposDisplay = <div>No repos</div>;
+    if (repos && repos.length > 0) {
+      reposDisplay = repos.map((repo) => (
+        <UserRepo key={repo.url} repo={repo} />
+      ));
+    }
+    return (
+      <div>
+        <hr />
+        <h3 className="mb-4">Latest Github Repos</h3>
+        {reposDisplay}
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default ProfileGithub;
+const mapStateToProps = (state) => ({
+  repos: state.repos,
+});
+export default connect(mapStateToProps, { getGithubByUsername })(ProfileGithub);
